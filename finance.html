@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>finance</title>
+    <style>
+    body {
+        color: #34495e;
+        font-size: 14px;
+    }
+    
+    .section {
+        padding: 15px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    .form {
+        background-color: #eee;
+    }
+    
+    .section label {
+        display: block;
+        margin-bottom: 10px;
+        line-height: 30px;
+    }
+    
+    .section label input {
+        background: none;
+        color: #34495e;
+        background-color: #fff;
+        min-width: 200px;
+        border: 1px solid #dce4ec;
+        line-height: 18px;
+        padding: 5px 8px;
+        box-shadow: none;
+        outline: none; 
+    }
+    
+    .submit {
+        background-color: #2ecc71;
+        display: block;
+        line-height: 36px;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="section" id="result"></div>
+    <div class="section form">
+        <label>投入时间：
+            <input type="text" id="time" placeholder="初始1年">
+        </label>
+        <label>万份收益：
+            <input type="text" id="rate" placeholder="初始2.0, 年化7.5%">
+        </label>
+        <label>初始金额：
+            <input type="text" id="initMoney" placeholder="初始1w元">
+        </label>
+        <label>月投金额：
+            <input type="text" id="monthMoney" placeholder="初始5k元">
+        </label>
+    </div>
+    <div class="section">
+        <span class="submit" onClick="calc()">计算</span>
+    </div>
+</body>
+<script>
+var timeEl = document.getElementById('time'),
+    initMoneyEl = document.getElementById('initMoney'),
+    monthMoneyEl = document.getElementById('monthMoney'),
+    rateEl = document.getElementById('rate'),
+    resultEl = document.getElementById('result');
+
+function calc() {
+    var year = timeEl.value,
+        init = initMoneyEl.value,
+        month = monthMoneyEl.value,
+        rate = rateEl.value;
+
+    
+
+    //default value
+    year = year > 0 ? +year : 1;
+    init = init > 0 ? +init : 1 * 10000;
+    month = month > 0 ? +month : 0.5 * 10000;
+    rate = rate > 0 ? +rate : 2.0;
+    rate /= 10000;
+
+    var outlay = 0;
+    var inMon = init;
+    var total = init;
+    var days = year * 365;
+
+    for (var i = 1; i < days; i++) {
+        if (i >= days - 1) {
+            resultEl.innerHTML  = "<p>\u6295\u5165\u65F6\u95F4:" + year + "年</p>\n<p>\u521D\u59CB\u989D\u5EA6:" + inMon.toFixed(2) + "</p>\n<p>\u6708\u6295\u989D\u5EA6:" + month.toFixed(2) + "</p>\n<p>\u4E07\u4EFD\u6536\u76CA:" + (rate * 10000).toFixed(2) + "</p>\n<p>\u603B\u6536\u5165:" + total.toFixed(2) + "</p>\n<p>\u603B\u6295\u5165:" + (outlay + inMon).toFixed(2) + "</p>\n<p>\u603B\u76C8\u5229:" + (total - outlay - inMon).toFixed(2) + "</p>";
+        }
+        total *= (1 + rate);
+        if (i % 30 == 0) {
+            total += month;
+            outlay += month;
+        }
+    }
+
+}
+</script>
+
+</html>
