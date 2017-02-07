@@ -1,4 +1,4 @@
-# Finance Calc
+# Finance
 
 ### Running the project
 
