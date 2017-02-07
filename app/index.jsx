@@ -2,12 +2,12 @@ import './index.less';
 import React, { Component } from 'react'
 
 const defaultState = {
-			year : 1,
-			init : 1000 * 10,
-			month : 1000 * 5,
-			rate : 7.5,
-			total: 0
-        };
+	    year : 1,
+	    init : 1000 * 10,
+	    month : 1000 * 5,
+	    rate : 7.5,
+	    total: 0
+	};
 export default class Home extends Component {
 	constructor(props) {
         super(props);
@@ -52,15 +52,15 @@ export default class Home extends Component {
 		return (
 			<div>
 				<div className="section result">
-					<p>投入时间:<em>{year}年</em></p>
-					<p>初始额度:<em>{init.toFixed(2)}</em></p>
-					<p>月投额度:<em>{month.toFixed(2)}</em></p>
-					<p>收益类型:<em>先息后本</em></p>
-					<p>年化利率:<em>{`${rate}%`}</em></p>
-					<p>万份收益:<em>{(rate/365*100).toFixed(2)}</em></p>
-					<p>总收入:<em>{total.toFixed(2)}</em></p>
-					<p>总投入:<em>{(init + month * year * 12).toFixed(2)}</em></p>
-					<p>总盈利:<em>{( total - init - month * year * 12 ).toFixed(2)}</em></p>
+                    <p>投入时间:<em>{year}年</em></p>
+                    <p>初始额度:<em>{init.toFixed(2)}</em></p>
+                    <p>月投额度:<em>{month.toFixed(2)}</em></p>
+                    <p>收益类型:<em>先息后本</em></p>
+                    <p>年化利率:<em>{`${rate}%`}</em></p>
+                    <p>万份收益:<em>{(rate/365*100).toFixed(2)}</em></p>
+                    <p>总收入:<em>{total.toFixed(2)}</em></p>
+                    <p>总投入:<em>{(init + month * year * 12).toFixed(2)}</em></p>
+                    <p>总盈利:<em>{( total - init - month * year * 12 ).toFixed(2)}</em></p>
 				</div>
 				<div className="section form">
 				    <label>投入时间：
