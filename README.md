@@ -1,13 +1,13 @@
 # Finance
 
-### Running the project
+## Running the project
 
 ``` bash
   yarn  
   yarn start
 ```
 
-### Preview
+## Preview
 
 [pure javascript](https://cnhub.github.io/finance/finance.html)
 
