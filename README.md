@@ -1,4 +1,4 @@
-# finance
+# Finance Calc
 
 ### Running the project
 
@@ -6,7 +6,9 @@
   yarn  
   yarn start
 ```
-### preview
+
+### Preview
+
 [pure javascript](https://cnhub.github.io/finance/finance.html)
 
 [react version](https://cnhub.github.io/finance/dist/index.html)
