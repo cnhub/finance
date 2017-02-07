@@ -1,5 +1,6 @@
 import './index.less';
 import React, { Component } from 'react'
+import classNames from 'classnames/bind'
 
 const defaultState = {
 	    year : 1,
@@ -11,31 +12,40 @@ const defaultState = {
 export default class Home extends Component {
 	constructor(props) {
         super(props);
-        this.state = defaultState;
+        const visible = false;
+        this.state = {...defaultState, visible};
     }
 	onChangeYear(evt){
 		let value = evt.target.value != '' ? evt.target.value : defaultState.year;
 		this.setState({
-			year : value
+			year : value,
+			visible: true
 		});
 	}
 	onChangeRate(evt){
 		let value = evt.target.value != '' ? evt.target.value : defaultState.rate;
 		this.setState({
-			rate : +value
+			rate : +value,
+			visible: true
 		});
 	}
 	onChangeInit(evt){
 		let value = evt.target.value != '' ? evt.target.value : defaultState.init;
 		this.setState({
-			init : +value
+			init : +value,
+			visible: true
 		});
 	}
 	onChangeMonth(evt){
 		let value = evt.target.value != '' ? evt.target.value : defaultState.month;
 		this.setState({
-			month : +value
+			month : +value,
+			visible: true
 		});
+	}
+	show(){
+		const visible = true;
+		this.setState({visible});
 	}
 	reset(){
 		this.setState(defaultState);
@@ -43,7 +53,7 @@ export default class Home extends Component {
 		form.reset();
 	}
 	render(){
-		const { year, init, month, rate } = this.state;
+		const { year, init, month, rate, visible } = this.state;
 		const months = year * 12;
 	    let total = init; 
 
@@ -53,7 +63,7 @@ export default class Home extends Component {
 	    }
 		return (
 			<div>
-				<div className="section result">
+				<div className={classNames({'section': true, 'result': true, 'visible' : visible})}>
                     <p>投入时间:<em>{year}年</em></p>
                     <p>初始额度:<em>{init.toFixed(2)}</em></p>
                     <p>月投额度:<em>{month.toFixed(2)}</em></p>
@@ -79,7 +89,8 @@ export default class Home extends Component {
 				    </label>
 				</form>
 				<div className="section footer">
-				    <span className="submit" onClick={::this.reset}>重置</span>
+				    <span onClick={::this.show}>显示结果</span>
+				    <span className="reset" onClick={::this.reset}>重置</span>
 				</div>
 			</div>
 		)

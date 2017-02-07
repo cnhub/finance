@@ -2,7 +2,7 @@
      color: #34495e;
      font-size: 14px;
  }
-
+ 
  .section {
      padding: 15px;
      color: #333;
@@ -12,21 +12,27 @@
  .form {
      background-color: #eee;
  }
-.result{
+ 
+ .result {
      text-align: left;
      width: 288px;
      color: #666;
-     p{
-          line-height: 1.25;
-          em{
-               color: #333;
-               float: right;
-               font-style: normal;
-               display: inline-block;
-               text-align: right;
-          }
+     display: none;
+     p {
+         line-height: 1.25;
+         em {
+             color: #333;
+             float: right;
+             font-style: normal;
+             display: inline-block;
+             text-align: right;
+         }
      }
-}
+ }
+ 
+ .visible {
+     display: block;
+ }
  
  .section label {
      display: block;
@@ -46,12 +52,21 @@
      box-shadow: none;
      outline: none;
  }
-
- .submit {
-     background-color: #2ecc71;
-     display: block;
-     line-height: 36px;
+ 
+ .footer {
      text-align: center;
-     color: #fff;
-     font-size: 16px;
+     span {
+          width: 40%;
+          cursor: pointer;
+         background-color: #2ecc71;
+         display: inline-block;
+         margin-right: 30px;
+         line-height: 36px;
+         text-align: center;
+         color: #fff;
+         font-size: 16px;
+     }
+     .reset{
+          background-color: #c1c1c1;
+     }
  }
