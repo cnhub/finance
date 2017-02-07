@@ -89,8 +89,8 @@ export default class Home extends Component {
 				    </label>
 				</form>
 				<div className="section footer">
-				    <span onClick={::this.show}>显示结果</span>
-				    <span className="reset" onClick={::this.reset}>重置</span>
+				    <span onClick={::this.show} className={classNames({'hidden' : visible})}>显示结果</span>
+				    <span onClick={::this.reset} className={classNames({'hidden' : !visible})}>重置</span>
 				</div>
 			</div>
 		)
