@@ -13,9 +13,6 @@ export default class Home extends Component {
         super(props);
         this.state = defaultState;
     }
-	reset(){
-		this.setState(defaultState);
-	}
 	onChangeYear(evt){
 		let value = evt.target.value != '' ? evt.target.value : defaultState.year;
 		this.setState({
@@ -40,6 +37,11 @@ export default class Home extends Component {
 			month : +value
 		});
 	}
+	reset(){
+		this.setState(defaultState);
+		const form = document.getElementsByClassName('form')[0];
+		form.reset();
+	}
 	render(){
 		const { year, init, month, rate } = this.state;
 		const months = year * 12;
@@ -62,7 +64,7 @@ export default class Home extends Component {
                     <p>总投入:<em>{(init + month * year * 12).toFixed(2)}</em></p>
                     <p>总盈利:<em>{( total - init - month * year * 12 ).toFixed(2)}</em></p>
 				</div>
-				<div className="section form">
+				<form className="section form">
 				    <label>投入时间：
 				        <input type="number" max="30" step="1"  placeholder="初始1年" onChange={::this.onChangeYear} />
 				    </label>
@@ -75,7 +77,7 @@ export default class Home extends Component {
 				    <label>月投金额：
 				        <input type="number" min="0" step="1000"  placeholder="初始5k元" onChange={::this.onChangeMonth} />
 				    </label>
-				</div>
+				</form>
 				<div className="section footer">
 				    <span className="submit" onClick={::this.reset}>重置</span>
 				</div>
