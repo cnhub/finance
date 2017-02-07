@@ -17,23 +17,27 @@ export default class Home extends Component {
 		this.setState(defaultState);
 	}
 	onChangeYear(evt){
+		let value = evt.target.value != '' ? evt.target.value : defaultState.year;
 		this.setState({
-			year : +evt.target.value
+			year : value
 		});
 	}
 	onChangeRate(evt){
+		let value = evt.target.value != '' ? evt.target.value : defaultState.rate;
 		this.setState({
-			rate : +evt.target.value
+			rate : +value
 		});
 	}
 	onChangeInit(evt){
+		let value = evt.target.value != '' ? evt.target.value : defaultState.init;
 		this.setState({
-			init : +evt.target.value
+			init : +value
 		});
 	}
 	onChangeMonth(evt){
+		let value = evt.target.value != '' ? evt.target.value : defaultState.month;
 		this.setState({
-			month : +evt.target.value
+			month : +value
 		});
 	}
 	render(){
@@ -48,27 +52,28 @@ export default class Home extends Component {
 		return (
 			<div>
 				<div className="section result">
-					<p>投入时间:{year}年</p>
-					<p>初始额度:{init.toFixed(2)}</p>
-					<p>月投额度:{month.toFixed(2)}</p>
-					<p>万份收益:{(rate/365*100).toFixed(2)}</p>
-					<p>收益类型:先息后本</p>
-					<p>总收入:{total.toFixed(2)}</p>
-					<p>总投入:{(init + month * year * 12).toFixed(2)}</p>
-					<p>总盈利:{( total - init - month * year * 12 ).toFixed(2)}</p>
+					<p>投入时间:<em>{year}年</em></p>
+					<p>初始额度:<em>{init.toFixed(2)}</em></p>
+					<p>月投额度:<em>{month.toFixed(2)}</em></p>
+					<p>收益类型:<em>先息后本</em></p>
+					<p>年化利率:<em>{`${rate}%`}</em></p>
+					<p>万份收益:<em>{(rate/365*100).toFixed(2)}</em></p>
+					<p>总收入:<em>{total.toFixed(2)}</em></p>
+					<p>总投入:<em>{(init + month * year * 12).toFixed(2)}</em></p>
+					<p>总盈利:<em>{( total - init - month * year * 12 ).toFixed(2)}</em></p>
 				</div>
 				<div className="section form">
 				    <label>投入时间：
-				        <input type="text"  placeholder="初始1年" onChange={::this.onChangeYear} />
+				        <input type="number" max="30" step="1"  placeholder="初始1年" onChange={::this.onChangeYear} />
 				    </label>
 				    <label>年化收益：
-				        <input type="text"  placeholder="年化7.5%" onChange={::this.onChangeRate} />
+				        <input type="number" min="1" max="20" step="0.1"  placeholder="年化7.5%" onChange={::this.onChangeRate} />
 				    </label>
 				    <label>初始金额：
-				        <input type="text"  placeholder="初始1w元" onChange={::this.onChangeInit} />
+				        <input type="number" min="0" step="1000" placeholder="初始1w元" onChange={::this.onChangeInit} />
 				    </label>
 				    <label>月投金额：
-				        <input type="text"  placeholder="初始5k元" onChange={::this.onChangeMonth} />
+				        <input type="number" min="0" step="1000"  placeholder="初始5k元" onChange={::this.onChangeMonth} />
 				    </label>
 				</div>
 				<div className="section footer">
