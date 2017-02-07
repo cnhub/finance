@@ -6,7 +6,7 @@
   yarn  
   yarn start
 ```
+### preview
+[pure javascript](https://cnhub.github.io/finance/finance.html)
 
-[preview](https://cnhub.github.io/finance/finance.html)
-
-[preview react version](https://cnhub.github.io/finance/dist/index.html)
+[react version](https://cnhub.github.io/finance/dist/index.html)
